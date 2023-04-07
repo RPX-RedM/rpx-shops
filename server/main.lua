@@ -8,7 +8,7 @@ RegisterNetEvent("RPXShops:SERVER:PurchaseItem", function(shop, item, amount)
         local price = itemData.price * amount
         if player.money.cash >= price then
             exports['rpx-inventory']:AddItem(src, item, amount)
-            player.func.RemoveMoney('cash', price)
+            player.RemoveMoney('cash', price)
             TriggerClientEvent("RPXShops:CLIENT:PurchaseItem", src)
         else
             RPX.pNotifyLeft(src, {text = "You don't have enough money to purchase this item.", type = "error", timeout = 3000, layout = "centerLeft"})
