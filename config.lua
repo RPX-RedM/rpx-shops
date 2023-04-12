@@ -7,6 +7,7 @@ Config.ThirdEye = true -- SpawnShopKeeps must be true for this, as the Shopkeep 
 Config.TargetResource = 'meta_target'
 
 Config.Shops = {
+    --[[
     {
         name = "Test Shop",
         showblip = true,
@@ -21,13 +22,8 @@ Config.Shops = {
         items = {
             { name = "Bread", item = "bread", img = "bread.png", price = 1, amount = 1 },
             { name = "Water", item = "water", img = "water.png", price = 2, amount = 1 },
-            { name = "Bread", item = "bread", img = "bread.png", price = 1, amount = 1 },
-            { name = "Water", item = "water", img = "water.png", price = 2, amount = 1 },
-            { name = "Bread", item = "bread", img = "bread.png", price = 1, amount = 1 },
-            { name = "Water", item = "water", img = "water.png", price = 2, amount = 1 },
-            { name = "Bread", item = "bread", img = "bread.png", price = 1, amount = 1 },
-            { name = "Water", item = "water", img = "water.png", price = 2, amount = 1 },
         },
 
     },
+    ]]
 }
