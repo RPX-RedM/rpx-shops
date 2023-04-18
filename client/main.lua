@@ -2,10 +2,7 @@ local ShopOpen = false
 local CurrentShop = nil
 local ShopkeepPeds = {}
 
---@function: OpenShop
---@description: Opens the shop menu.
---@param: shopData - table - The shop data.
-local CloseShop = function()
+local function CloseShop()
     SendNUIMessage({ action = 'CLOSE_SHOP' })
     SetNuiFocus(false, false)
     ClearPedTasks(PlayerPedId())
@@ -13,10 +10,7 @@ local CloseShop = function()
     CurrentShop = nil
 end
 
---@function: OpenShop
---@description: Opens the shop menu.
---@param: shopData - table - The shop data.
-local OpenShop = function(id)
+local function OpenShop(id)
     local shopData = Config.Shops[id]
     ShopOpen = true
     CurrentShop = id
@@ -31,7 +25,7 @@ local OpenShop = function(id)
             walktopos = v
         end
     end
-    TaskGoToCoordAnyMeans(PlayerPedId(), walktopos.x, walktopos.y, walktopos.z, 1.0, 0.0, 0.0, 0.0)
+    TaskGoToCoordAnyMeans(PlayerPedId(), walktopos.x, walktopos.y, walktopos.z, 1.0, 0.0, false, 0.0)
     while GetScriptTaskStatus(PlayerPedId(), 0x93399E79) ~= 8 do
         Citizen.Wait(0)
     end
@@ -56,7 +50,7 @@ Citizen.CreateThread(function()
             })
         end
         if shop.showblip == true then
-            shop.StoreBlip = N_0x554d9d53f696d002(1664425300, shop.coords)
+            shop.StoreBlip = Citizen.InvokeNative(0x554D9D53F696D002, 1664425300, shop.coords)
             SetBlipSprite(shop.StoreBlip, GetHashKey('blip_shop_market_stall'), 52)
             SetBlipScale(shop.StoreBlip, 0.2)
         end
@@ -79,7 +73,7 @@ CreateThread(function()
             SetPedCanPlayAmbientAnims(ped, true)
             SetPedCanRagdollFromPlayerImpact(ped, false)
             SetEntityInvincible(ped, true)
-            SetPedFleeAttributes(ped, 0, 0)
+            SetPedFleeAttributes(ped, 0, false)
             FreezeEntityPosition(ped, true)
             SetRandomOutfitVariation(ped, true)
     
