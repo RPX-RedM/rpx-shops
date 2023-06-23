@@ -30,7 +30,7 @@ function SetupShopMenu() {
                     style: 'currency', 
                     currency: 'USD' 
                 })}</div>
-                <div class="shopitemimg"><img src="nui://rpx-inventory/items/${item.img}"/></div>
+                <div class="shopitemimg"><img src="nui://rpx-inventory/web/images/${item.img}"/></div>
             </div>
         `);
     });
